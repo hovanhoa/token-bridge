@@ -1,13 +1,51 @@
-# Sample Hardhat Project
+# Token Bridge Smart Contract
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+Some smart contracts is used to build a bridge for ERC20 and native token.
+It comes with most sensible plugins already installed:
 
-Try running some of the following tasks:
+-   [Hardhat](https://github.com/nomiclabs/hardhat): compile and run the smart contracts on a local development network
+-   [Ethers](https://github.com/ethers-io/ethers.js/): renowned Ethereum library and wallet implementation
+-   [Dotenv](https://github.com/motdotla/dotenv): loads environment variables from .env
+-   [Web3.js](https://github.com/web3/web3.js): simplify my code with built-in utilities
+-   [Openzeppelin-contracts](https://github.com/OpenZeppelin/openzeppelin-contracts): a library for secure smart contract development
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat ignition deploy ./ignition/modules/Lock.js
+## Usage
+
+### Pre Requisites
+
+First, config the `.env` file (ex `.env.example`)
 ```
+RPC_ENDPOINT=
+PRIVATE_KEY_1=
+PRIVATE_KEY_2=
+```
+
+Before running any command, make sure to install dependencies:
+
+```sh
+npm install
+```
+
+### Compile
+
+Compile the smart contracts with Hardhat:
+
+```sh
+npx hardhat compile
+```
+
+### Test
+
+```sh
+npx hardhat test
+```
+
+### Deploy contract to network
+
+```sh
+npx hardhat run scripts/deploy.js
+```
+
+## License
+
+Distributed under the MIT License.
