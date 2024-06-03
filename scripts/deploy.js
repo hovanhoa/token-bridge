@@ -1,10 +1,16 @@
 const { ethers } = require("hardhat");
+const web3 = require("web3");
 
 async function main() {
-    const TokenSwap = await ethers.getContractFactory("TokenSwap");
-    const TokenSwapContract = await TokenSwap.deploy("0x22495B6533186F5bA8B5AE0ad47F20AC65014f00", 1);
-    const TokenSwapAddress = await TokenSwapContract.getAddress();
-    console.log("TokenSwap deployed to:", TokenSwapAddress);
+    const Token = await ethers.getContractFactory("KameToken");
+    const token = await Token.deploy(web3.utils.toWei(21000000, "ether"));
+    const tokenAddress = await token.getAddress();
+    console.log("ERC20 deployed at:    ", tokenAddress)
+
+    const Swap = await ethers.getContractFactory("TokenSwap");
+    const swap = await Swap.deploy(tokenAddress, 100);
+    const swapAddress = await swap.getAddress()
+    console.log("SwapToken deployed at:", swapAddress)
 }
 
 main().catch((error) => {
